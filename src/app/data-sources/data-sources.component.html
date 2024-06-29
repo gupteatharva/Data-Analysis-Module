@@ -1,0 +1,165 @@
+<div class="main-content mon">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="col-md-7">
+          <div class="card p-7">
+            <div class="card-header card-header-tabs upload-color custom-card-header">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <h4 class="heading">Select Data Source</h4>
+                </div>
+              </div>
+            </div>
+            
+            <mat-form-field class="p-12 custom-mat-form-field">
+              <mat-label>Select an option</mat-label>
+              <mat-select [(ngModel)]="selected" class="custom-mat-select">
+                <mat-option value="CSV">CSV</mat-option>
+                <mat-option value="SQL">SQL</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- <form>
+              <mat-form-field>
+                <mat-label>Favorite food</mat-label>
+                <mat-select [(ngModel)]="selectedValue2" name="food" panelClass="example-panel">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form> -->
+          </div>
+          <div class="h-20"></div>
+          <div class="card w-425" *ngIf="selected === 'CSV';  else showThis">
+            <div class="card-header card-header-tabs upload-color custom-card-header">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <h4 class="heading">Upload Files Here</h4>
+                </div>
+              </div>
+            </div>
+            <div class="card-body custom-card-body">
+              <div class="card-stats upload-card">
+                <section class="upload-section">
+                  <div class="col-md-12 upload-files mb-25 ">
+                    <input type="file" class="file-in" style="display:none"
+                      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                      (change)="source1($event)" #fileInput #hiddenfileinput>
+                    <button (click)="hiddenfileinput.click()" mat-stroked-button class="mr-15 mon bg-custom"><i
+                        class="material-icons mr-4">folder</i>Select
+                      Csv</button>
+                    <button mat-raised-button color="primary" class="m-20 mon" (click)="onUpload(fileInput)"
+                      [disabled]="fileDetialsObj.fileId > 0 ? null:true">Upload</button>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <ng-template #showThis></ng-template>
+
+          <div class="d-flex justify-content-between">
+            <div class="card w-425" *ngIf="selected === 'SQL';  else showThis"
+              [style.display]="toggleDisplay ? 'none' : 'block'">
+              <div class="card-header card-header-tabs upload-color">
+                <div class="nav-tabs-navigation">
+                  <div class="nav-tabs-wrapper">
+                    <h3 class="heading">Connect to your Sql Server</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="card-stats upload-card">
+                  <section class="upload-section">
+                    <div class="col-md-12 upload-files mb-25 ">
+                      <!-- <form> -->
+                      <mat-form-field class="custom-mat-form-field">
+                        <mat-label>Server Name</mat-label>
+                        <input type="text" matInput placeholder="myservername" [(ngModel)]="servername">
+                        <!-- <mat-hint>Errors appear instantly!</mat-hint>
+                          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field class="custom-mat-form-field">
+                        <mat-label>Database Name</mat-label>
+                        <input type="text" matInput placeholder="mydatabase" [(ngModel)]="dbname">
+                      </mat-form-field>
+                      <mat-form-field class="custom-mat-form-field">
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput placeholder="johndoe" [(ngModel)]="username">
+                      </mat-form-field>
+                      <mat-form-field class="custom-mat-form-field">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput [(ngModel)]="password">
+                      </mat-form-field>
+                      <!-- </form> -->
+                      <button mat-raised-button color="primary" class="m-10 mon"
+                        (click)="onConnect(servername, dbname, username, password)">Connect</button>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="w-225" *ngIf="dbname; else showThis" [style.display]="toggleDisplay ? 'none' : 'block'">
+              <h5 style="color:white !important">Tables in <b>{{dbname}}</b> Database:</h5>
+              <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Table</mat-label>
+                <mat-select [(ngModel)]="selectedTableName" name="table" class="custom-mat-select">
+                  <mat-option *ngFor="let table of tables" [value]="table">
+                    {{table}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div *ngIf="tables">
+                <button mat-raised-button color="primary" class="m-20 mon"
+                  (click)="uploadTable(selectedTableName, dbname)">Connect</button>
+              </div>
+            </div>
+          </div>
+          <ng-template #showThis></ng-template>
+          <div class="col-md-12">
+            <a class="link custom-link" *ngIf="fileObjects.length>0">Choose file to add another source</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <div class="col-md-12">
+        <h2 class="heading my-0">Upload Files Here</h2>
+      </div>
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <div class="card card-stats upload-card">
+            <section class="upload-section">
+              <div class="col-md-12 upload-files mb-25">
+                <input type="file" class="file-in" style="display:none"
+                  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                  (change)="source1($event)" #fileInput #hiddenfileinput>
+                <button (click)="hiddenfileinput.click()" mat-stroked-button class="mr-15"><i
+                    class="material-icons mr-4">folder</i>Select
+                  Csv</button>
+                <button mat-raised-button color="primary" class="m-20" (click)="onUpload(fileInput)"
+                  [disabled]="fileDetialsObj.fileId > 0 ? null:true">Upload</button>
+              </div>
+            </section>
+          </div>
+          <div class="col-md-12">
+            <a class="link" *ngIf="fileObjects.length>0">Choose file to add another source</a>
+          </div>
+        </div> -->
+
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <app-csv-list [dataObjects]="fileObjects"></app-csv-list>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- </div> -->

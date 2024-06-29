@@ -1,0 +1,290 @@
+<div class="col-md-12 pb-4" *ngIf="graphValue==='bar'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)" class="custom-mat-select">
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX" class="custom-mat-select">
+                    <!-- <div *ngFor="let item of columnOptionsObj; let i=index" > -->
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                    <!-- </div> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY" class="custom-mat-select">
+                    <!-- <div *ngFor="let item of fileObjects; let i=index"> -->
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                    <!-- </div> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'bar'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            [headers]="headers" *ngIf="test" [graphValue]="graphValue" [test]="test"></app-graph-vis>
+        <div id="myChart"></div>
+    </div>
+</div>
+
+<div class="col-md-12 pb-4" *ngIf="graphValue==='line'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)" class="custom-mat-select">
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX" class="custom-mat-select">
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY" class="custom-mat-select">
+                    <!-- <div *ngFor="let item of fileObjects; let i=index"> -->
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                    <!-- </div> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'line'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            [headers]="graphDetailsObj.headers" *ngIf="test"></app-graph-vis>
+    </div>
+</div>
+
+<div class="col-md-12 pb-4" *ngIf="graphValue==='radar'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)" class="custom-mat-select">
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX" class="custom-mat-select">
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY" class="custom-mat-select">
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'radar'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            [headers]="graphDetailsObj.headers" *ngIf="test"></app-graph-vis>
+    </div>
+</div>
+
+<div class="col-md-12 pb-4" *ngIf="graphValue==='pie'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)" class="custom-mat-select">
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX" class="custom-mat-select">
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY" class="custom-mat-select">
+                    <!-- <div *ngFor="let item of fileObjects; let i=index"> -->
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                    <!-- </div> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'pie'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            [headers]="graphDetailsObj.headers" *ngIf="test"></app-graph-vis>
+    </div>
+</div>
+
+<div class="col-md-12 pb-4" *ngIf="graphValue==='polarArea'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)" class="custom-mat-select">
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX" class="custom-mat-select">
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY" class="custom-mat-select">
+                    <!-- <div *ngFor="let item of fileObjects; let i=index"> -->
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                    <!-- </div> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'polarArea'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            [headers]="graphDetailsObj.headers" *ngIf="test"></app-graph-vis>
+    </div>
+</div>
+
+<!-- <div class="col-md-12" *ngIf="graphValue==='scatter'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)"  >
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX">
+                        <mat-option *ngFor="let header of columnOptionsObj.headers" value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY">
+                        <mat-option *ngFor="let header of columnOptionsObj.headers" value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'scatter'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            *ngIf="test" ></app-graph-vis>
+    </div>
+</div> -->
+
+<div class="col-md-12 pb-4" *ngIf="graphValue==='doughnut'">
+    <div class="col-md-10">
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Data Source</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue" (selectionChange)="changeOption(dataSourceValue)" class="custom-mat-select">
+                    <mat-option *ngFor="let item of visObjects"
+                        value="{{item.actionSourceName}}">{{item.actionSourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select X Data</mat-label>
+                <mat-select [(ngModel)]="inputDataX" class="custom-mat-select">
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field class="custom-mat-form-field">
+                <mat-label>Select Y Data</mat-label>
+                <mat-select [(ngModel)]="inputDataY" class="custom-mat-select">
+                    <!-- <div *ngFor="let item of fileObjects; let i=index"> -->
+                    <mat-option *ngFor="let header of columnOptionsObj.headers"
+                        value="{{header}}">{{header}}</mat-option>
+                    <!-- </div> -->
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button mat-raised-button color="primary"
+            (click)="performBarGraph(dataSourceValue, inputDataX, inputDataY)">Perform Visualization</button>
+    </div>
+    <div class="col-md-12">
+        <app-graph-vis [graphType]="'doughnut'" [graphX]="graphDetailsObj.xData" [graphY]="graphDetailsObj.yData"
+            [headers]="graphDetailsObj.headers" *ngIf="test"></app-graph-vis>
+    </div>
+</div>

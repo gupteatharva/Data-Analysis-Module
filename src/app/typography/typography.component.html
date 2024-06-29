@@ -1,0 +1,37 @@
+<div class="main-content">
+    <div class="col-md-12 d-flex">
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <mat-form-field class="custom-mat-form-field">
+                    <mat-label>Select Graph</mat-label>
+                    <mat-select [(ngModel)]="graphValue" class="custom-mat-select">
+                        <mat-option value="bar">Bar Chart</mat-option>
+                        <mat-option value="pie">Pie Chart</mat-option>
+                        <mat-option value="doughnut">Doughnut Chart</mat-option>
+                        <mat-option value="line">Line Chart</mat-option>
+                        <mat-option value="polarArea">Polar Area Chart</mat-option>
+                        <mat-option value="radar">Radar Chart</mat-option>
+                        <!-- <mat-option value="scatter">Scatter Chart</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="card col-md-12 mw-93">
+                    <!-- <div class="col-md-4">
+                        <p>  </p>
+                    </div> -->
+                    <div style="padding-top: 15px;">
+                        <h5 style="color:white;"> Selected Graph: {{graphValue}} </h5>
+                    </div>
+                    <div class="col-md-12">
+                        <app-graphs [graphValue]="graphValue"></app-graphs>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-csv-list [dataObjects]="fileObjects"></app-csv-list>
+            <app-csv-list [dataObjects]="actionObjects"></app-csv-list>
+        </div>
+    </div>
+</div>

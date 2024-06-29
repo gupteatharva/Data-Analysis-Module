@@ -1,0 +1,307 @@
+<div class="row col-md-12 " *ngIf="selectedValue==='FillNullValues'">
+
+    <div class="col-md-10 py-2">
+         <input class="custom-input" type="text" [value]="dataSourceName==undefined ? '' : dataSourceName" placeholder="Select DataSource">
+        <!-- <mat-form-field >
+            <mat-label>Select Data Source</mat-label>
+            <mat-select [(ngModel)]="dataSourceValue">
+                <mat-option *ngFor="let item of fileObjects"
+                    value="{{item.sourceName}}">{{item.sourceName}}</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+    </div>
+
+        <div class="col-md-4">
+            <button mat-raised-button color="primary" (click)="performFillNa(dataSourceName)">Perform Action</button>
+            <!-- <button  color="primary" (click)="performFillNa(dataSourceName)">Perform Action</button> -->
+        </div>
+        <div class="col-md-4">
+            <!-- <button  color="primary" (click)="saveDataSource(selectedValue+'-'+dataSourceName)">Save
+                DataSource</button> -->
+            <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+dataSourceName)">Save
+                DataSource</button>
+        </div>
+        <div class="col-md-4">
+            <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+        </div>
+    
+    <!-- <div class="col-md-12">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Data Sources
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab>
+                        <app-view-table></app-view-table>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div> -->
+</div>
+
+<div class="row col-md-12 pad-0" *ngIf="selectedValue==='Aggregate'">
+    <div class="row col-md-12 align-items-baseline">
+        <div class="col-md-4">
+            <input class="custom-input" type="text" [value]="inputData==undefined ? '' : inputData" placeholder="Select Column from csv">
+        </div>
+        <div class="col-md-4">
+            <input class="custom-input" type="text" [value]="optionSourceName==undefined ? '' : optionSourceName" placeholder="Datasource">
+        </div>
+        <div class="col-md-4">
+            <mat-form-field  class="custom-mat-form-field">
+                <mat-label>Select Operation</mat-label>
+                <mat-select [(ngModel)]="operationsValue" class="custom-mat-select">
+                    <mat-option value="sum">Sum</mat-option>
+                    <mat-option value="min">Min</mat-option>
+                    <mat-option value="max">Max</mat-option>
+                    <mat-option value="mean">Mean</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary"
+            (click)="performAggregate(optionSourceName, operationsValue, inputData)">Perform Action</button>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+optionSourceName)">Save
+            DataSource</button>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+    </div>
+    <!-- <div class="col-md-12">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Data Sources
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab>
+                        <app-view-table></app-view-table>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div> -->
+</div>
+
+<div class="row col-md-12 pad-0" *ngIf="selectedValue==='GroupBy'">
+    <div class="row col-md-12 align-items-baseline">
+        <div class="col-md-4">
+            <input class="custom-input" type="text" [value]="optionSourceName==undefined ? '' : optionSourceName" placeholder="Datasource">
+        </div>
+        <div class="col-md-4">
+            <input class="custom-input" type="text" [value]="inputData==undefined ? '' : inputData" placeholder="Select Column from csv">
+        </div>
+        <div class="col-md-4">
+            <mat-form-field  class="custom-mat-form-field">
+                <mat-label>Select Operation</mat-label>
+                <mat-select [(ngModel)]="operationsValue" class="custom-mat-select">
+                    <mat-option value="sum">Sum</mat-option>
+                    <mat-option value="min">Min</mat-option>
+                    <mat-option value="max">Max</mat-option>
+                    <mat-option value="mean">Mean</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary"
+            (click)="performGroupBy(optionSourceName,operationsValue,inputData)">Perform Action</button>
+    </div>
+    <div class="col-md-4">
+        <!-- <div *ngFor="let item of fileObjects"> -->
+            <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+optionSourceName)">Save DataSource</button>
+        <!-- </div> -->
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+    </div>
+    <!-- <div class="col-md-12">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Data Sources
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab>
+                        <app-view-table></app-view-table>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div> -->
+</div>
+
+<div class="row col-md-12" *ngIf="selectedValue==='Concat'">
+    <div class="row col-md-12 py-4">
+        <div class="col-md-6" *ngIf="fileObjects.length>1; else showThis">
+            <!-- <mat-form-field >
+                <mat-label>Select Data Source 1</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue">
+                    <mat-option *ngFor="let item of fileObjects"
+                        value={{item.sourceName}}>{{item.sourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <input class="custom-input" type="text" [value]="dataSourceName==undefined ? '' : dataSourceName" placeholder="Select DataSource">
+        </div>
+        <div class="col-md-6" *ngIf="fileObjects.length>1; else showThis">
+            <!-- <mat-form-field >
+                <mat-label>Select Data Source 2</mat-label>
+                <mat-select [(ngModel)]="dataSourceValue2">
+                    <mat-option *ngFor="let item of fileObjects"
+                        value={{item.sourceName}}>{{item.sourceName}}</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <input class="custom-input" type="text" [value]="secondDataSourceName==undefined ? '' : secondDataSourceName" placeholder="Select DataSource Two">
+        </div>
+        <ng-template #showThis></ng-template>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="performConcat(dataSourceName,secondDataSourceName)">Perform
+            Action</button>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+dataSourceName+'_'+secondDataSourceName)">Save DataSource</button>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+    </div>
+    <!-- <div class="col-md-12">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Data Sources
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab>
+                        <app-view-table></app-view-table>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div> -->
+</div>
+
+
+<div class="row col-md-12" *ngIf="selectedValue==='DeleteColumns'">
+    <div class="col-md-6">
+        <input class="custom-input" type="text" [value]="optionSourceName==undefined ? '' : optionSourceName" placeholder="Datasource">
+    </div>
+    <div class="col-md-6">
+        <input class="custom-input" type="text" [value]="inputData==undefined ? '' : inputData" placeholder="Select Column from csv">
+    </div>
+    <div class="col-md-4 py-4">
+        <button mat-raised-button color="primary" (click)="performDelCols(inputData, optionSourceName)">Perform
+            Action</button>
+    </div>
+    <div class="col-md-4 py-4">
+        <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+optionSourceName)">Save DataSource</button>
+    </div>
+    <div class="col-md-4 py-4">
+        <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+    </div>
+</div>
+
+<div class="row col-md-12" *ngIf="selectedValue==='Average'">
+    <div class="col-md-6">
+        <input class="custom-input" type="text" [value]="optionSourceName==undefined ? '' : optionSourceName" placeholder="Datasource">
+    </div>
+    <div class="col-md-6">
+        <input class="custom-input" type="text" [value]="inputData==undefined ? '' : inputData" placeholder="Select Column from csv">
+    </div>
+    <div class="col-md-4 py-4">
+        <button mat-raised-button color="primary" (click)="performAverage(inputData, optionSourceName)">Perform
+            Action</button>
+    </div>
+    <div class="col-md-4 py-4">
+        <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+optionSourceName)">Save DataSource</button>
+    </div>
+    <div class="col-md-4 py-4">
+        <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+    </div>
+</div>
+
+
+<div class="row col-md-12" *ngIf="selectedValue==='Join'">
+    <div class="col-md-6" *ngIf="fileObjects.length>1; else showThis">
+        <!-- <mat-form-field >
+            <mat-label>Select Data Source 1</mat-label>
+            <mat-select [(ngModel)]="dataSourceValue">
+                <mat-option *ngFor="let item of fileObjects"
+                    value={{item.sourceName}}>{{item.sourceName}}</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+        <input class="custom-input" type="text" [value]="leftDataSourceName==undefined ? '' : leftDataSourceName" placeholder="Select Left DataSource">
+    </div>
+    <div class="col-md-6" *ngIf="fileObjects.length>1; else showThis">
+        <!-- <mat-form-field >
+            <mat-label>Select Data Source 2</mat-label>
+            <mat-select [(ngModel)]="dataSourceValue2">
+                <mat-option *ngFor="let item of fileObjects"
+                    value={{item.sourceName}}>{{item.sourceName}}</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+        <input class="custom-input" type="text" [value]="rightDataSourceName==undefined ? '' : rightDataSourceName" placeholder="Select Right  DataSource">
+    </div>
+    <ng-template #showThis></ng-template>
+    <div class="col-md-6 py-4">
+        <input class="custom-input" type="text" [value]="leftOn==undefined ? '' : leftOn" placeholder="Left on">
+    </div>
+    <div class="col-md-6 py-4">
+        <input class="custom-input" type="text" [value]="rightOn==undefined ? '' : rightOn" placeholder="Right on">
+    </div>
+    <div class="col-md-12 row">
+        
+        <div class="col-md-4">
+            <mat-form-field  class="custom-mat-form-field">
+                <mat-label>How</mat-label>
+                <mat-select [(ngModel)]="operationsValue" class="custom-mat-select">
+                    <mat-option value="left">Left</mat-option>
+                    <mat-option value="right">Right</mat-option>
+                    <mat-option value="inner">Inner</mat-option>
+                    <mat-option value="outer">Outer</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="performJoin(leftDataSourceName, rightDataSourceName, leftOn, rightOn, operationsValue)">Perform
+            Action</button>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="saveDataSource(selectedValue+'-'+leftDataSourceName+'_'+rightDataSourceName)">Save DataSource</button>
+    </div>
+    <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="clearData()">Clear Data</button>
+    </div>
+</div>
+
+<div class="py-4">
+    <mat-accordion *ngIf="actionObjects.length >= 1; else showThis">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Data Sources
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!-- <mat-tab-group>
+                <mat-tab> -->
+                    <app-view-table></app-view-table>
+                <!-- </mat-tab>
+            </mat-tab-group> -->
+        </mat-expansion-panel>
+    </mat-accordion>
+    <ng-template #showThis></ng-template>
+</div>

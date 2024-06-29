@@ -1,0 +1,14 @@
+.mat-raised-button {
+    color: black !important;
+    background-color: #ffd740 !important;
+}
+
+::ng-deep .success-snackbar {
+    background-color: green !important;
+    color: white !important;
+}
+
+::ng-deep .error-snackbar {
+    background-color: red !important;
+    color: white !important;
+}

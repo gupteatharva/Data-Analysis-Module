@@ -1,0 +1,89 @@
+.mat-raised-button {
+    color: white !important;
+    --tw-bg-opacity: 0.75;
+    background-color: rgb(74 205 141/var(--tw-bg-opacity)) !important;
+    /* background-color: #ffd740 !important; */
+}
+
+.mon {
+    font-family: 'Montserrat';
+}
+
+.bg-custom {
+    --tw-bg-opacity: 1;
+    background-color: rgb(58 58 67 / var(--tw-bg-opacity)) !important;
+}
+
+.upload-card {
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px !important;
+}
+
+.mr-4 {
+    margin-right: 4px !important;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.custom-mat-select ::ng-deep .mat-select-value {
+    color: white !important;
+}
+
+.custom-mat-select ::ng-deep .mat-select-placeholder {
+    color: white !important;
+}
+
+.custom-mat-form-field ::ng-deep .mat-form-field-label {
+    color: white !important;
+}
+
+.custom-mat-form-field ::ng-deep .mat-input-element::placeholder {
+    color: white;
+    /* Change the color to white */
+}
+
+
+.custom-mat-form-field ::ng-deep .mat-form-field-underline {
+    background-color: white !important;
+}
+
+.custom-mat-form-field .mat-form-field-underline.mat-focused {
+    background-color: white !important;
+    /* Change the background color to white */
+}
+
+.custom-mat-form-field .mat-form-field-underline.mat-select-underline {
+    background-color: white !important;
+    /* Change the background color to white */
+}
+
+.custom-mat-form-field ::ng-deep .mat-select-arrow {
+    color: white !important;
+}
+
+.mat-option {
+    color: white !important;
+    background: #3C4858 !important;
+}
+
+.custom-mat-select ::ng-deep .mat-select-panel::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+    display: none !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden-again {
+    display: none !important;
+}

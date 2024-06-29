@@ -1,0 +1,137 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-primary">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <h4>Generate Python Script</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Generate a Python script for the actions you have performed!</h5>
+                        <button mat-raised-button color="primary" (click)="generateScript()">Download</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 p-0">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper">
+                                    <h4 class="card-title">Upload Python Script</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <h5>Upload previously downloaded Python Script!</h5>
+                            <div class="col-md-12 upload-files mb-25 ">
+                                <input type="file" class="file-in" style="display:none" accept=".py"
+                                    (change)="source1($event)" #fileInput #hiddenfileinput>
+                                <button (click)="hiddenfileinput.click()" mat-stroked-button
+                                    class="mr-15 mon bg-custom"><i class="material-icons mr-4">folder</i>Select
+                                    Python Script</button>
+                                <button mat-raised-button color="primary" class="m-20 mon"
+                                    (click)="onUpload(fileInput)">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <h4 class="card-title">Download Data</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <app-csv-list [dataObjects]="actionObjects" [downloadBtn]="true" [isDraggable]="false"
+                            *ngIf="actionObjects.length > 0; else showThis"></app-csv-list>
+                        <ng-template #showThis>
+                            <h5>Perform action to download its data!</h5>
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 p-0">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper">
+                                    <h4 class="card-title">Select Chart</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <!-- <h2>Saved Charts</h2> -->
+                            <div *ngIf="savedCharts.length>0; else showThis2">
+                                <div>
+                                    <mat-form-field class="custom-mat-form-field">
+                                        <mat-label>Select a Chart</mat-label>
+                                        <mat-select [(ngModel)]="selectedChart" class="custom-mat-select">
+                                            <mat-option *ngFor="let chart of savedCharts" [value]="chart">
+                                                {{chart.headerLabel +'-' + '('+ chart.type + ' chart)'}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <div class="d-flex align-items-baseline">
+                                        <section class="example-section" style="margin-right: 20px !important;">
+                                            <mat-checkbox class="example-margin" [(ngModel)]="checked"
+                                                (change)="toggleShowAllCharts()">Show
+                                                All Charts</mat-checkbox>
+                                        </section>
+                                        <button mat-raised-button color="primary" (click)="onChartSelect()">Show
+                                            Chart</button>
+                                    </div>
+                                </div>
+                                <!-- <div>
+                                    <canvas id="chartCanvas" width="400" height="400"></canvas>
+                                </div> -->
+                            </div>
+                            <ng-template #showThis2>
+                                <h5>Perform Visualization to see the charts!</h5>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 d-flex justify-content-center align-items-center" *ngIf="selectedChart"
+                [ngClass]="{'hidden': checked, 'hidden-again': !setCharts }">
+                <div class="card">
+                    <div #chartContainer style="height: 400px !important; width:400px !important;"></div>
+                    <!-- <div *ngFor="let chart of savedCharts"> -->
+                    <!-- <div *ngIf="checked"> -->
+                    <!-- <canvas [attr.id]="'myChart' + chart.id" width="400" height="400"></canvas> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- <div class="col-lg-12 d-flex justify-content-center align-items-center"
+                [ngClass]="{'hidden': !checked, 'hidden-again': setCharts }"> -->
+            <div class="col-lg-12" style="box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+            background: #202940 !important;
+            color: white !important;" [ngClass]="{'hidden': !checked, 'hidden-again': setCharts }">
+                <div #allChartContainer>
+                    <!-- <canvas class="col-lg-6">canvas</canvas>
+                    <canvas class="col-lg-6">canvas</canvas>
+                    <canvas class="col-lg-6">canvas</canvas>
+                    <canvas class="col-lg-6">canvas</canvas> -->
+                </div>
+                <!-- <div class="col-md-6"> -->
+                <!-- </div> -->
+                <!-- <div class="col-md-6"> -->
+                <!-- </div> -->
+                <!-- <div class="col-md-6"> -->
+                <!-- </div> -->
+                <!-- <div class="col-md-6"> -->
+                <!-- </div> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

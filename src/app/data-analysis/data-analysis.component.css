@@ -1,0 +1,63 @@
+.custom-mat-select ::ng-deep .mat-select-value {
+    color: white !important;
+}
+
+.custom-mat-select ::ng-deep .mat-select-placeholder {
+    color: white !important;
+}
+
+.custom-mat-form-field ::ng-deep .mat-form-field-label {
+    color: white !important;
+}
+
+.custom-mat-form-field ::ng-deep .mat-input-element::placeholder {
+    color: white;
+    /* Change the color to white */
+}
+
+
+.custom-mat-form-field ::ng-deep .mat-form-field-underline {
+    background-color: white !important;
+}
+
+.custom-mat-form-field .mat-form-field-underline.mat-focused {
+    background-color: white !important;
+    /* Change the background color to white */
+}
+
+.custom-mat-form-field .mat-form-field-underline.mat-select-underline {
+    background-color: white !important;
+    /* Change the background color to white */
+}
+
+.custom-mat-form-field ::ng-deep .mat-select-arrow {
+    color: white !important;
+}
+
+.mat-option {
+    color: white !important;
+    background: #3C4858 !important;
+}
+
+.custom-mat-select ::ng-deep .mat-select-panel::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+    display: none !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.mw-93{
+    max-width: 93% !important;
+}
+

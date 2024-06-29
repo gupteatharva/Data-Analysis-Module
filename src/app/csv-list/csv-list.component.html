@@ -1,0 +1,23 @@
+<mat-accordion *ngFor="let item of dataObjects">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-bottom">
+        <mat-expansion-panel-header cdkDropList [cdkDropListData]="item.actionSourceName"
+            class="crollable d-flex align-items-center" (cdkDropListDropped)="dropDataSourceName($event)">
+            <mat-panel-title cdkDrag [cdkDragData]="item.actionSourceName" draggable={{isDraggable}}
+                (dragstart)="dragStart($event)" class="justify-content-between">
+                {{item.actionSourceName}}
+                <button mat-raised-button *ngIf="downloadBtn" class="bg" (click)="downloadCSV(item.sourceName, item.actionSourceName)"><span class="material-icons">download</span> Download CSV</button>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div cdkDropListGroup>
+            <div class="example-container">
+                <div cdkDropList [cdkDropListData]="item.headers" class="example-list scrollable"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item2 of item.headers; let i = index" cdkDrag
+                        [cdkDragData]="[item2, item.actionSourceName]" draggable="true" (dragstart)="dragStart($event)">
+                        {{item2}} ({{item.dataType[i]}})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

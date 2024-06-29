@@ -1,0 +1,139 @@
+.mr-4 {
+    margin-right: 4px !important;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.p-12 {
+    padding: 12px;
+}
+
+.p-7 {
+    padding: 7px;
+}
+
+.upload-card {
+    /* min-height: 100px; */
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 15px !important;
+}
+
+.mat-raised-button {
+    color: white !important;
+    background-color: #1B3461 !important;
+}
+
+.upload-color {
+    /* background: linear-gradient(60deg, #AEC7F3, #739EE9); */
+    --tw-bg-opacity: 1;
+    background-color: rgb(140 109 253/var(--tw-bg-opacity)) !important;
+
+}
+
+.heading {
+    /* border-bottom: solid 0.1em; */
+    max-width: max-content;
+    /* letter-spacing: 0.5px; */
+    /* font-weight: 400; */
+}
+
+.mon {
+    font-family: 'Montserrat';
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.w-425 {
+    width: 425px;
+}
+
+.w-225 {
+    width: 225px;
+}
+
+.custom-mat-select ::ng-deep .mat-select-value {
+    color: white !important;
+}
+
+.custom-mat-select ::ng-deep .mat-select-placeholder {
+    color: white !important;
+}
+
+.custom-mat-form-field ::ng-deep .mat-form-field-label {
+    color: white !important;
+}
+
+.custom-mat-form-field ::ng-deep .mat-input-element::placeholder {
+    color: white;
+    /* Change the color to white */
+}
+
+
+.custom-mat-form-field ::ng-deep .mat-form-field-underline {
+    background-color: white !important;
+}
+
+.custom-mat-form-field .mat-form-field-underline.mat-focused {
+    background-color: white !important;
+    /* Change the background color to white */
+}
+
+.custom-mat-form-field .mat-form-field-underline.mat-select-underline {
+    background-color: white !important;
+    /* Change the background color to white */
+}
+
+.custom-mat-form-field ::ng-deep .mat-select-arrow {
+    color: white !important;
+}
+
+.custom-card-header {
+    padding-left: 15px !important;
+    padding-bottom: 10px !important;
+    padding-right: 0 !important;
+}
+
+.mat-raised-button {
+    color: white !important;
+    --tw-bg-opacity: 0.75;
+    background-color: rgb(74 205 141/var(--tw-bg-opacity)) !important;
+    /* background-color: #ffd740 !important; */
+}
+
+.custom-card-body {
+    padding: 18px !important;
+}
+
+.h-20 {
+    height: 20px;
+}
+
+.m-10 {
+    margin-top: 10px;
+}
+
+.bg-custom {
+    --tw-bg-opacity: 1;
+    background-color: rgb(58 58 67 / var(--tw-bg-opacity)) !important;
+}
+
+.mat-option {
+    color: white !important;
+    background: #3C4858 !important;
+}
+
+.custom-link {
+    --tw-bg-opacity: 1;
+    color: rgb(140 109 253/var(--tw-bg-opacity)) !important;
+}
