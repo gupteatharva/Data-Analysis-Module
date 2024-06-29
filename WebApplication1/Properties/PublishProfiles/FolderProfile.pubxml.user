@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Internship_KloudQ\csharp\publish\webAPI</_PublishTargetUrl>
+    <History>True|2023-03-06T04:10:15.5530187Z;True|2023-03-06T09:22:06.2031377+05:30;True|2023-03-05T21:57:39.6142106+05:30;True|2023-03-05T21:38:17.9874654+05:30;True|2023-03-05T11:33:38.6425742+05:30;False|2023-03-05T11:32:49.2876193+05:30;True|2023-03-05T10:50:11.5892666+05:30;True|2023-03-05T10:42:27.5136127+05:30;True|2023-03-05T10:32:41.6539944+05:30;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=KAUSHALBHIDE%3bInitial Catalog=FileDetailsDB%3b User ID=admin%3b Password=admin123%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="WebApplication1.Data.FileContext">
+      <Value>Data Source=KAUSHALBHIDE%3bInitial Catalog=FileDetailsDB%3b User ID=admin%3b Password=admin123%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
